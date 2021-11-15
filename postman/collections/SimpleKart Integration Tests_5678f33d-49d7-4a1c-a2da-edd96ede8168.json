@@ -1,0 +1,675 @@
+{
+    "info": {
+        "_postman_id": "8c8162ee-7ef6-4a55-9517-291cb5d9a621",
+        "name": "SimpleKart Integration Tests",
+        "description": "API for an imaginary E-Commerce store to demonstrate API Builder capabilities in Postman\n\nContact Support:\n Name: Postman Team\n Email: simplekart@postman.com",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create new order and fetch it's items",
+            "item": [
+                {
+                    "name": "Create an order",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "244cf86d-1241-4dde-aa9e-e4004d07e20b",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <h5>Order: {{id}}</h5>",
+                                    "    <p>",
+                                    "        <b>Address:</b> {{address}}</br>",
+                                    "        Delivery By: {{arrivalDate}}",
+                                    "    </p>",
+                                    "    <hr />",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px;\">Name</th>",
+                                    "            <th>Description</th>",
+                                    "            <th style=\"padding-right: 10px;\">Price</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        {{#each items}}",
+                                    "            <tr>",
+                                    "                <td style=\"padding-left: 10px;\">{{name}}</td>",
+                                    "                <td>{{description}}</td>",
+                                    "                <td style=\"padding-right: 10px;\">£ {{price}}</td>",
+                                    "            </tr>",
+                                    "        {{/each}}",
+                                    "        ",
+                                    "        <tr>",
+                                    "            <td colSpan=2 style=\"text-align: right\">",
+                                    "                <b>Total</b>",
+                                    "            </td>",
+                                    "            <td>£ {{total}}</td>",
+                                    "        </tr>",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {",
+                                    "    items: body.items,",
+                                    "    id: body.orderId,",
+                                    "    address: body.address,",
+                                    "    total: body.orderTotal,",
+                                    "    arrivalDate: body.arrivalDate",
+                                    "});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "it('Order should have the correct item', function () {",
+                                    "    expect(body.orderId).to.be.ok;",
+                                    "    expect(body.items.length).to.eql(1);",
+                                    "    ",
+                                    "    expect(body.arrivalDate).to.be.ok;",
+                                    "    expect(body.orderDate).to.be.ok;",
+                                    "    expect(body.orderTotal).to.eql(15);",
+                                    "    expect(body.address).to.eql('SimpleKart HQ, 221B Baker street');",
+                                    "});",
+                                    "",
+                                    "pm.environment.set('orderId', body.orderId);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "6b4adf93-fde5-4161-8ea2-3a0834484d68",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "x-mock-match-request-body",
+                                "value": "true",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"address\": \"SimpleKart HQ, 221B Baker street\",\n    \"items\": [\n        {\n            \"itemId\": 16247,\n            \"name\": \"Postman Merch\",\n            \"price\": 15,\n            \"description\": \"Official T-shirt for the Postman community.\"\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/orders",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orders"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Fetch order details",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "1861d012-5b92-411e-8b57-e6bf1c655f41",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <h5>Order: {{id}}</h5>",
+                                    "    <p>",
+                                    "        <b>Address:</b> {{address}}</br>",
+                                    "        Delivery By: {{arrivalDate}}",
+                                    "    </p>",
+                                    "    <hr />",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px;\">Name</th>",
+                                    "            <th>Description</th>",
+                                    "            <th style=\"padding-right: 10px;\">Price</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        {{#each items}}",
+                                    "            <tr>",
+                                    "                <td style=\"padding-left: 10px;\">{{name}}</td>",
+                                    "                <td>{{description}}</td>",
+                                    "                <td style=\"padding-right: 10px;\">£ {{price}}</td>",
+                                    "            </tr>",
+                                    "        {{/each}}",
+                                    "        ",
+                                    "        <tr>",
+                                    "            <td colSpan=2 style=\"text-align: right\">",
+                                    "                <b>Total</b>",
+                                    "            </td>",
+                                    "            <td>£ {{total}}</td>",
+                                    "        </tr>",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {",
+                                    "    items: body.items,",
+                                    "    id: body.orderId,",
+                                    "    address: body.address,",
+                                    "    total: body.orderTotal,",
+                                    "    arrivalDate: body.arrivalDate",
+                                    "});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "it('Order should have the correct item', function () {",
+                                    "    expect(body.orderId).to.be.ok;",
+                                    "    expect(body.items.length).to.eql(1);",
+                                    "    ",
+                                    "    expect(body.arrivalDate).to.be.ok;",
+                                    "    expect(body.orderDate).to.be.ok;",
+                                    "    expect(body.orderTotal).to.eql(15);",
+                                    "    expect(body.address).to.eql('SimpleKart HQ, 221B Baker street');",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "1095db6a-a11f-417c-b292-72f30f93d880",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orders/:orderId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orders",
+                                ":orderId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "ad9dac9a-fc7b-4d6a-87f3-138894b79f44",
+                                    "key": "orderId",
+                                    "value": "{{orderId}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get all orders",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "95aca0f1-664f-428a-a734-7e9e45f35480",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px;\">Order ID</th>",
+                                    "            <th>Items</th>",
+                                    "            <th>Ordered At</th>",
+                                    "            <th>Address</th>",
+                                    "            <th style=\"padding-right: 10px;\">Total Amount</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        {{#each orders}}",
+                                    "            <tr>",
+                                    "                <td style=\"padding-left: 10px;\">{{orderId}}</td>",
+                                    "                <td>{{items}}</td>",
+                                    "                <td>{{orderDate}}</td>",
+                                    "                <td>{{address}}</td>",
+                                    "                <td style=\"padding-right: 10px;\">£ {{orderTotal}}</td>",
+                                    "            </tr>",
+                                    "        {{/each}}",
+                                    "        ",
+                                    "        <tr>",
+                                    "            <td colSpan=4 style=\"text-align: right\">",
+                                    "                <b>Total</b>",
+                                    "            </td>",
+                                    "            <td>£ {{total}}</td>",
+                                    "        </tr>",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {",
+                                    "    orders: body.map((order) => {",
+                                    "        return {...order, items: order.items.length};",
+                                    "    }),",
+                                    "    total: body.reduce((acc, order) => acc + order.orderTotal, 0)",
+                                    "});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "it('Orders should have the new order', function () {",
+                                    "    expect(body.length).to.be.ok;",
+                                    "    ",
+                                    "    let orderFound = false;",
+                                    "    ",
+                                    "    body.forEach((order) => {",
+                                    "        orderFound = orderFound || order.orderId === pm.environment.get('orderId');",
+                                    "        ",
+                                    "        expect(order.orderId).to.be.ok;",
+                                    "        expect(order.items.length).to.be.ok;",
+                                    "        expect(order.orderTotal).to.be.ok;",
+                                    "        expect(order.arrivalDate).to.be.ok;",
+                                    "        expect(order.orderDate).to.be.ok;",
+                                    "    });",
+                                    "    ",
+                                    "    expect(orderFound).to.eql(true);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "ccf1e6e8-a46b-4ea3-8390-d64fc9528f43",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orders?list=10",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orders"
+                            ],
+                            "query": [
+                                {
+                                    "key": "list",
+                                    "value": "10",
+                                    "description": "Number of orders to show"
+                                }
+                            ]
+                        },
+                        "description": "Obtain order details from orders database"
+                    },
+                    "response": []
+                }
+            ],
+            "id": "e1f4b80c-7b58-4f2f-b2f5-a86f125f2c5e"
+        },
+        {
+            "name": "Fetch order details given an order id",
+            "item": [
+                {
+                    "name": "Fetch order details",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "e34e3966-8b95-4a25-80e3-af98465f4c52",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <h5>Order: {{id}}</h5>",
+                                    "    <p>",
+                                    "        <b>Address:</b> {{address}}</br>",
+                                    "        Delivery By: {{arrivalDate}}",
+                                    "    </p>",
+                                    "    <hr />",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px;\">Name</th>",
+                                    "            <th>Description</th>",
+                                    "            <th style=\"padding-right: 10px;\">Price</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        {{#each items}}",
+                                    "            <tr>",
+                                    "                <td style=\"padding-left: 10px;\">{{name}}</td>",
+                                    "                <td>{{description}}</td>",
+                                    "                <td style=\"padding-right: 10px;\">£ {{price}}</td>",
+                                    "            </tr>",
+                                    "        {{/each}}",
+                                    "        ",
+                                    "        <tr>",
+                                    "            <td colSpan=2 style=\"text-align: right\">",
+                                    "                <b>Total</b>",
+                                    "            </td>",
+                                    "            <td>£ {{total}}</td>",
+                                    "        </tr>",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {",
+                                    "    items: body.items,",
+                                    "    id: body.orderId,",
+                                    "    address: body.address,",
+                                    "    total: body.orderTotal,",
+                                    "    arrivalDate: body.arrivalDate",
+                                    "});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "it('Order should have the correct item', function () {",
+                                    "    expect(body.orderId).to.be.ok;",
+                                    "    expect(body.items.length).to.eql(1);",
+                                    "    ",
+                                    "    expect(body.arrivalDate).to.be.ok;",
+                                    "    expect(body.orderDate).to.be.ok;",
+                                    "    expect(body.orderTotal).to.eql(15);",
+                                    "    expect(body.address).to.eql('SimpleKart HQ, 221B Baker street');",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "87db5e8e-afd9-44cf-97a5-538c73b44652",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/orders/:orderId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "orders",
+                                ":orderId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "a0f6a620-4b4b-41b2-aa5c-bbc4efc52a9e",
+                                    "key": "orderId",
+                                    "value": "{{orderId}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "e30911d4-f094-42eb-a033-4fd82c81d5ae"
+        },
+        {
+            "name": "Check items and its details",
+            "item": [
+                {
+                    "name": "Fetch all items",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "ea16e537-ac40-4360-94b2-2ef516d14a2f",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px; width: 25%;\">Name</th>",
+                                    "            <th style=\"width: 50%\">Description</th>",
+                                    "            <th style=\"padding-right: 10px;\">Price</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        {{#each items}}",
+                                    "            <tr>",
+                                    "                <td style=\"padding-left: 10px;\">{{name}}</td>",
+                                    "                <td>{{description}}</td>",
+                                    "                <td style=\"padding-right: 10px;\">£ {{price}}</td>",
+                                    "            </tr>",
+                                    "        {{/each}}",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {",
+                                    "    items: body",
+                                    "});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "it('Order should have the correct item', function () {",
+                                    "    expect(body.length).to.be.ok;",
+                                    "    ",
+                                    "    body.forEach((item) => {",
+                                    "        expect(item.name).to.be.ok;",
+                                    "        expect(item.description).to.be.ok;",
+                                    "        expect(item.itemId).to.be.ok;",
+                                    "        expect(item.price).to.be.ok;",
+                                    "    });",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "ae381803-a8df-4cf7-a822-89ced9cd9ec8",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/items?list=10",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "items"
+                            ],
+                            "query": [
+                                {
+                                    "key": "list",
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Fetch postman merch",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "8cae1fe5-71ea-4796-88bb-f9513652b562",
+                                "exec": [
+                                    "const body = pm.response.json();",
+                                    "",
+                                    "eval(pm.variables.get(\"lib\"));",
+                                    "",
+                                    "// Views",
+                                    "const template = `",
+                                    "    <style>",
+                                    "        body {",
+                                    "            color: #fff;",
+                                    "        }",
+                                    "    </style>",
+                                    "    <table>",
+                                    "        <tr>",
+                                    "            <th style=\"padding-left: 10px; width: 10%;\">Id</th>",
+                                    "            <th style=\"width: 15%;\">Name</th>",
+                                    "            <th style=\"width: 40%\">Description</th>",
+                                    "            <th style=\"padding-right: 10px;\">Price</th>",
+                                    "        </tr>",
+                                    "",
+                                    "        <tr>",
+                                    "            <td style=\"padding-left: 10px;\">{{itemId}}</td>",
+                                    "            <td>{{name}}</td>",
+                                    "            <td>{{description}}</td>",
+                                    "            <td style=\"padding-right: 10px;\">£ {{price}}</td>",
+                                    "        </tr>",
+                                    "    </table>",
+                                    "`;",
+                                    "",
+                                    "pm.visualizer.set(template, {...body});",
+                                    "",
+                                    "",
+                                    "// Tests",
+                                    "",
+                                    "it(\"Should have 200 OK status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "it('Order should have the correct item', function () {",
+                                    "    expect(body.name).to.be.ok;",
+                                    "    expect(body.description).to.be.ok;",
+                                    "    expect(body.itemId).to.be.ok;",
+                                    "    expect(body.price).to.be.ok;",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "42849e69-d5d1-4538-9604-ffd5a210d148",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/items/:itemId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "items",
+                                ":itemId"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "6c3e6a83-f549-4d29-af5f-67eae8d1a1f1",
+                                    "key": "itemId",
+                                    "value": "16247"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "a412f55c-86b1-4ef7-b565-7678fc8d8a52"
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "4dc66083-3301-494b-907c-0ea8ba40758c",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "316955b5-d6ab-4ed3-b001-2134084012f0",
+                "type": "text/javascript",
+                "exec": [
+                    "var it = pm.test;",
+                    "var expect = pm.expect;"
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "id": "82690b0b-1221-4e76-bcc3-c9e0ef6ec7eb",
+            "key": "baseUrl",
+            "value": "https://fffc2eb4-dbcf-4c6d-bc30-c3cb2e7ecfa6.mock.pstmn.io"
+        },
+        {
+            "id": "9e145c5d-820b-4f1d-86e8-14aea0cc7dfc",
+            "key": "lib",
+            "value": "var it = pm.test;\nvar expect = pm.expect;"
+        }
+    ]
+}
