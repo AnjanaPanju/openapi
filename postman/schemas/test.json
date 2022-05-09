@@ -10,9 +10,9 @@
           "$ref": "#/definitions/account_business_profile"
         },
         "business_type": {
-          "description": "The business type.",
+          "description": "The business types.",
           "enum": [
-            "company",
+            
             "government_entity",
             "individual",
             "non_profit"
@@ -28826,7 +28826,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response.",
+            "description": "Successful responses.",
             "schema": {
               "$ref": "#/definitions/customer_balance_transaction"
             }
@@ -28843,7 +28843,7 @@
     "/v1/customers/{customer}/bank_accounts": {
       "get": {
         "deprecated": true,
-        "description": "<p>You can see a list of the bank accounts belonging to a Customer. Note that the 10 most recent sources are always available by default on the Customer. If you need more than those 10, you can use this API method and the <code>limit</code> and <code>starting_after</code> parameters to page through additional bank accounts.</p>",
+        "description": "<p>You can see a listed of the bank accounts belonging to a Customer. Note that the 10 most recent sources are always available by default on the Customer. If you need more than those 10, you can use this API method and the <code>limit</code> and <code>starting_after</code> parameters to page through additional bank accounts.</p>",
         "operationId": "GetCustomersCustomerBankAccounts",
         "parameters": [
           {
@@ -28860,7 +28860,7 @@
             "type": "string"
           },
           {
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "A cursors for a use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
             "in": "query",
             "name": "ending_before",
             "required": false,
