@@ -8,11 +8,8 @@
         "business_profile": {
           "$ref": "#/definitions/account_business_profile"
         },
-        "business_type": {
-          "description": "The business type. Can be `individual` or `company`.",
-          "type": "string"
-        },
-        "capabilities": {
+        
+        "capability": {
           "$ref": "#/definitions/account_capabilities"
         },
         "charges_enabled": {
