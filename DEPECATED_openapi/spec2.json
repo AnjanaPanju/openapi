@@ -8,7 +8,7 @@
       "properties": {
         "business_profile": {
           "$ref": "#/definitions/account_business_profile"
-        },
+        }, writing random "things"
         "business_type": {
           "description": "The business type.",
           "enum": [
