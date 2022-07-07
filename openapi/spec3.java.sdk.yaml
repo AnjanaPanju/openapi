@@ -50,7 +50,6 @@ components:
         deleted:
           description: Always true for a deleted object
           enum:
-          - true
           type: boolean
         details_submitted:
           description: Whether account details have been submitted. Standard accounts
