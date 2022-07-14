@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "28beba2e-5d53-4b98-83be-043ee26bf005",
+		"name": "SimpleKart Contract Tests",
+		"description": "API for an imaginary E-Commerce store to demonstrate API Builder capabilities in Postman\n\nContact Support:\n Name: Postman Team\n Email: simplekart@postman.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "Get items from the database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d77aa72c-90a7-469b-8e22-a525ceb3d3dd",
+								"exec": [
+									"pm.test(\"status code should be 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response=pm.response.json();",
+									"",
+									"var responseSchema={",
+									"    \"type\": \"array\",",
+									"    \"title\": \"The response schema\",",
+									"    \"description\": \"Response should be an array or items.\",",
+									"    \"items\": {",
+									"        \"$id\": \"#/items\",",
+									"        \"type\": \"object\",",
+									"        \"title\": \"The Items Schema\",",
+									"        \"description\": \"This is what an item looks like\",",
+									"        \"required\": [",
+									"            \"itemId\",",
+									"            \"name\",",
+									"            \"price\",",
+									"            \"description\"",
+									"        ],",
+									"        \"properties\": {",
+									"            \"itemId\": {",
+									"                \"type\": \"integer\"",
+									"            },",
+									"            \"name\": {",
+									"                \"type\": \"string\"",
+									"            },",
+									"            \"price\": {",
+									"                \"type\": \"integer\"",
+									"            },",
+									"            \"description\": {",
+									"                \"type\": \"string\"",
+									"            }",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"pm.test(\"response has valid schema\",function(){",
+									"    pm.expect(tv4.validate(response, responseSchema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "924636dc-5d0b-4596-8964-286f0fdbe74b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/items?list=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "list",
+									"value": "10",
+									"description": "Number of items to be displayed"
+								}
+							]
+						},
+						"description": "Pull a list of items from item database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get item details from the database ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "41462880-0d8d-46fc-8ae2-c140015adc1b",
+								"exec": [
+									"pm.test(\"status code should be 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response=pm.response.json();",
+									"",
+									"var itemSchema={",
+									"    \"type\": \"object\",",
+									"    \"title\": \"Item\",",
+									"    \"description\": \"This is how an Item in SimpleKart API looks like\",",
+									"    \"required\": [",
+									"        \"itemId\",",
+									"        \"name\",",
+									"        \"price\",",
+									"        \"description\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"itemId\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"name\": {",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"price\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"description\": {",
+									"            \"type\": \"string\"",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"pm.test(\"response has valid schema\",function(){",
+									"    pm.expect(tv4.validate(response, itemSchema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "2abf90dc-0275-4572-bcfb-bca1ef9092c1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/items/:itemId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"items",
+								":itemId"
+							],
+							"variable": [
+								{
+									"id": "b2eed929-b727-402d-813f-4b4387b3d8c7",
+									"key": "itemId",
+									"value": "1657",
+									"description": "(Required) Id of the item to pull details of"
+								}
+							]
+						},
+						"description": "Obtain item details from item database"
+					},
+					"response": []
+				}
+			],
+			"id": "df0b64d6-790a-4818-8e19-8d10a37e0a0d"
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "Get orders from the database ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d1de72e-3e34-415a-b015-610dc3fde2c4",
+								"exec": [
+									"pm.test(\"status code should be 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response=pm.response.json();",
+									"",
+									"var responseSchema={",
+									"    \"type\": \"array\",",
+									"    \"items\": {",
+									"        \"type\": \"object\",",
+									"        \"default\": {},",
+									"        \"required\": [",
+									"            \"orderId\",",
+									"            \"items\",",
+									"            \"arrivalDate\",",
+									"            \"orderDate\",",
+									"            \"orderTotal\",",
+									"            \"address\"",
+									"        ],",
+									"        \"properties\": {",
+									"            \"orderId\": {",
+									"                \"type\": \"integer\",",
+									"            },",
+									"            \"items\": {",
+									"                \"type\": \"array\",",
+									"                \"items\": {",
+									"                    \"type\": \"object\",",
+									"                    \"required\": [",
+									"                        \"itemId\",",
+									"                        \"name\",",
+									"                        \"price\",",
+									"                        \"description\"",
+									"                    ],",
+									"                    \"properties\": {",
+									"                        \"itemId\": {",
+									"                            \"type\": \"integer\",",
+									"                        },",
+									"                        \"name\": {",
+									"                            \"type\": \"string\",",
+									"                        },",
+									"                        \"price\": {",
+									"                            \"type\": \"integer\",",
+									"                        },",
+									"                        \"description\": {",
+									"                            \"type\": \"string\",",
+									"                        }",
+									"                    }",
+									"                }",
+									"            },",
+									"            \"arrivalDate\": {",
+									"                \"type\": \"string\",",
+									"            },",
+									"            \"orderDate\": {",
+									"                \"type\": \"string\",",
+									"            },",
+									"            \"orderTotal\": {",
+									"                \"type\": \"integer\",",
+									"            },",
+									"            \"address\": {",
+									"                \"type\": \"string\",",
+									"            }",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"pm.test(\"response has valid schema\",function(){",
+									"    pm.expect(tv4.validate(response, responseSchema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "c298dc2c-beba-4df6-8e97-8f0a2ce3d1f5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders?list=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "list",
+									"value": "10",
+									"description": "Number of orders to show"
+								}
+							]
+						},
+						"description": "Obtain order details from orders database"
+					},
+					"response": []
+				},
+				{
+					"name": "Post order details to the database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "91ba025f-7a78-41f7-bb4a-6fc0ecb506c5",
+								"exec": [
+									"pm.test(\"status code should be 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var response=pm.response.json();",
+									"",
+									"var responseSchema={",
+									"    \"type\": \"object\",",
+									"    \"title\": \"Order\",",
+									"    \"description\": \"This is an Order object\",",
+									"    \"required\": [",
+									"        \"orderId\",",
+									"        \"items\",",
+									"        \"arrivalDate\",",
+									"        \"orderDate\",",
+									"        \"orderTotal\",",
+									"        \"address\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"orderId\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"items\": {",
+									"            \"type\": \"array\",",
+									"            \"title\": \"Item\",",
+									"            \"description\": \"This is an Item object\",",
+									"            \"required\": [",
+									"                \"itemId\",",
+									"                \"name\",",
+									"                \"price\",",
+									"                \"description\"",
+									"            ],",
+									"            \"properties\": {",
+									"                \"itemId\": {",
+									"                    \"type\": \"integer\"",
+									"                },",
+									"                \"name\": {",
+									"                    \"type\": \"string\"",
+									"                },",
+									"                \"price\": {",
+									"                    \"type\": \"integer\"",
+									"                },",
+									"                \"description\": {",
+									"                    \"type\": \"string\"",
+									"                }",
+									"            }",
+									"        },",
+									"        \"arrivalDate\": {",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"orderDate\": {",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"orderTotal\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"address\": {",
+									"            \"type\": \"string\"",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"pm.test(\"response has valid schema\",function(){",
+									"    pm.expect(tv4.validate(response, responseSchema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f4506aeb-0fce-410a-8081-4f16b4096fce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"<string>\",\n    \"item\": {\n        \"itemId\": 1,\n        \"name\": \"<string>\",\n        \"price\": 2000,\n        \"description\": \"<string>\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://fffc2eb4-dbcf-4c6d-bc30-c3cb2e7ecfa6.mock.pstmn.io/orders",
+							"protocol": "https",
+							"host": [
+								"fffc2eb4-dbcf-4c6d-bc30-c3cb2e7ecfa6",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Post item order to orders database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get order details from database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1ddffa6-d90c-4eac-aee1-9cf6383f6548",
+								"exec": [
+									"pm.test(\"status code should be 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var response=pm.response.json();",
+									"",
+									"var responseSchema={",
+									"    \"type\": \"object\",",
+									"    \"title\": \"Order\",",
+									"    \"description\": \"This is an Order object\",",
+									"    \"required\": [",
+									"        \"orderId\",",
+									"        \"items\",",
+									"        \"arrivalDate\",",
+									"        \"orderDate\",",
+									"        \"orderTotal\",",
+									"        \"address\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"orderId\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"items\": {",
+									"            \"type\": \"object\",",
+									"            \"title\": \"Item\",",
+									"            \"description\": \"This is an Item object\",",
+									"            \"required\": [",
+									"                \"itemId\",",
+									"                \"name\",",
+									"                \"price\",",
+									"                \"description\"",
+									"            ],",
+									"            \"properties\": {",
+									"                \"itemId\": {",
+									"                    \"type\": \"integer\"",
+									"                },",
+									"                \"name\": {",
+									"                    \"type\": \"string\"",
+									"                },",
+									"                \"price\": {",
+									"                    \"type\": \"integer\"",
+									"                },",
+									"                \"description\": {",
+									"                    \"type\": \"string\"",
+									"                }",
+									"            }",
+									"        },",
+									"        \"arrivalDate\": {",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"orderDate\": {",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"orderTotal\": {",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"address\": {",
+									"            \"type\": \"string\"",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"pm.test(\"response has valid schema\",function(){",
+									"    pm.expect(tv4.validate(response, responseSchema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "fd14528d-8617-4f0b-81c6-505c5959c17c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/:orderId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"id": "335efd17-7c9e-48e8-b797-752fa28b9c3c",
+									"key": "orderId",
+									"value": "674",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Obtain item details from the database"
+					},
+					"response": []
+				}
+			],
+			"id": "bca65adc-e10a-441d-aec5-79abde1c21e3"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ce57852e-395c-4afb-b1ab-6a67e74f4fb9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "71d6410b-048a-46cc-a23c-a5c97ffe53b3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
