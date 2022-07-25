@@ -6,7 +6,7 @@
         "name": null,
         "product_description": null,
         "support_address": null,
-        "support_email": null,
+        "support_email": 1,
         "support_phone": null,
         "support_url": null,
         "url": null
