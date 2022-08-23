@@ -4,16 +4,17 @@ id = 98adb4b7-8faf-499b-b096-9bd1336a6ca1
 
 [relations.collections]
 rootDirectory = postman/collections
+files[] = {"id":"28beba2e-5d53-4b98-83be-043ee26bf005","path":"SimpleKart Contract Tests_74367a4a-21d6-4afd-b3bb-0909cefc02af.json","metaData":{}}
 files[] = {"id":"209bffa0-a3c3-4dac-bfde-66334ad59379","path":"SimpleKart Integration Tests_991f85ed-0799-4945-8ead-4c32d33f6e52.json","metaData":{}}
 files[] = {"id":"02bbfa1c-ec45-493f-ac8e-ee798b52bd50","path":"SimpleKart Security Tests_ae0a3a49-f230-488e-9448-636209df4410.json","metaData":{}}
 files[] = {"id":"fd012daf-1e05-444f-9897-c51b861e484f","path":"SimpleKart_0287c8ca-aa54-413d-bce2-fd35191a18bf.json","metaData":{}}
-files[] = {"id":"28beba2e-5d53-4b98-83be-043ee26bf005","path":"SimpleKart Contract Tests_74367a4a-21d6-4afd-b3bb-0909cefc02af.json","metaData":{}}
 
 [relations.collections.metaData]
 
 [relations.apiDefinition]
 rootDirectory = postman/schemas
 files[] = {"path":"Test.yaml","metaData":{}}
+files[] = {"path":"New.yaml","metaData":{}}
 
 [relations.apiDefinition.metaData]
 type = openapi:3
