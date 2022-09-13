@@ -1,0 +1,22 @@
+id = e1ef288f-ef19-4b96-b822-d6935d1a0d48
+
+[relations]
+
+[relations.collections]
+rootDirectory = postman/collections
+
+[relations.collections.metaData]
+
+[relations.apiDefinition]
+rootDirectory = openapi
+files[] = {"path":"fixtures2.json","metaData":{}}
+files[] = {"path":"fixtures2.yaml","metaData":{}}
+files[] = {"path":"fixtures3.json","metaData":{}}
+files[] = {"path":"fixtures3.yaml","metaData":{}}
+files[] = {"path":"spec2.json","metaData":{}}
+files[] = {"path":"spec2.yaml","metaData":{}}
+files[] = {"path":"spec3.json","metaData":{}}
+files[] = {"path":"spec3.yaml","metaData":{}}
+
+[relations.apiDefinition.metaData]
+type = openapi:3
