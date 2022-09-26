@@ -9,14 +9,6 @@ rootDirectory = postman/collections
 
 [relations.apiDefinition]
 rootDirectory = openapi
-files[] = {"path":"fixtures3.json","metaData":{}}
-files[] = {"path":"fixtures3.yaml","metaData":{}}
-files[] = {"path":"spec3.java.sdk.json","metaData":{}}
-files[] = {"path":"spec3.java.sdk.yaml","metaData":{}}
-files[] = {"path":"spec3.json","metaData":{}}
-files[] = {"path":"spec3.sdk.json","metaData":{}}
-files[] = {"path":"spec3.sdk.yaml","metaData":{}}
-files[] = {"path":"spec3.yaml","metaData":{}}
 
 [relations.apiDefinition.metaData]
 type = openapi:3
