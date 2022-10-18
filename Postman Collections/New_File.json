@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "f7394ba6-20db-4d7c-a9c1-daed7da4020d",
+		"name": "Server Errors",
+		"description": "This collection helps you learn how to configure different scenarios/examples for any endpoint/request.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Animals",
+			"_postman_id": "7ac1d87a-5e9d-4079-9ae0-38ad55442c41",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/animals",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"animals"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "",
+							"description": "Can take one of the following values - cats, dogs, rabbits",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Fetches you the list of animals in the pet store.\n\nThe endpoint supports filtering the list of animals by `type`. The set of allowed values for `type` are `cats, dogs and rabbits`.\n\nMultiple examples have been added to this request to help you understand how this API would work in the real world."
+			},
+			"response": [
+				{
+					"id": "1a02e9e5-4e9c-4b45-a481-2f9acf35c66f",
+					"name": "Get all animals",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/animals"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"German Sheperd\",\n        \"description\": \"The German Sheperd Dog, also known as the Alsatian, is a German breed of dog. They are commonly kept as companion dogs by pet lovers. They are also used in various fields of work like police work, search-and-rescue, disability assistance etc.\",\n        \"life span\": \"9-13 years\"\n    },\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"Bulldog\",\n        \"description\": \"The Bulldog, also known as the British or English Bulldog, is a British breed of dog. It is of medium size, a muscular, hefty dog with a wrinkled face and a distinctive pushed-in nose.\",\n        \"life span\": \"8-10 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Persian cat\",\n        \"description\": \"The Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the 'Persian Longhair' in English-speaking countries\",\n        \"life span\": \"12-17 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Munchkin cat\",\n        \"description\": \"The Munchkin cat or Sausage cat is a relatively new breed of cat characterized by its very short legs, which are caused by genetic mutation. The Munchkin is considered to be the original breed of dwarf cat.\",\n        \"life span\": \"12-15 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Holland Lop\",\n        \"description\": \"Holland Lops are miniature/dwarf rabbits that only weigh about 2 to 4 pounds. They are muscular, relative to their compact stature, and have various coat colours. Their lopped ears are one of their most distinctive features.\",\n        \"life span\": \"7-10 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Alaska rabbit\",\n        \"description\": \"The Alaska Rabbit is a medium-sized breed, weighing up to 9 pounds, and can live with other rabbits as well as other animals and older children. Despite its name, the Alaska Rabbit was bred in Germany in a bid to recreate the Alaskan Fox’s popular and plush fur. The effort failed, and the Alaska Rabbit has an intense black coat with black guard hair rather than the desired white guard hairs. Despite this, the breed became and remains famous for its beautiful looks and sweet temperament.\",\n        \"life span\": \"7-10 years\"\n    }\n]"
+				},
+				{
+					"id": "24ea9e1b-d1ea-4fed-b912-b79127ea98fc",
+					"name": "Get all dogs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/animals?type=dogs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"animals"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "dogs",
+									"description": "Can take one of the following values - cats, dogs, rabbits, birds"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"German Sheperd\",\n        \"description\": \"The German Sheperd Dog, also known as the Alsatian, is a German breed of dog. They are commonly kept as companion dogs by pet lovers. They are also used in various fields of work like police work, search-and-rescue, disability assistance etc.\",\n        \"life span\": \"9-13 years\"\n    },\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"Bulldog\",\n        \"description\": \"The Bulldog, also known as the British or English Bulldog, is a British breed of dog. It is of medium size, a muscular, hefty dog with a wrinkled face and a distinctive pushed-in nose.\",\n        \"life span\": \"8-10 years\"\n    }\n]"
+				},
+				{
+					"id": "450e13e2-12a5-47a5-ba14-f3c032fd9342",
+					"name": "No matching animals found in the store",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/animals?type=rodents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"animals"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "rodents",
+									"description": "Can take one of the following values - cats, dogs, rabbits"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"error\": {\n        \"name\": \"NoMatchingResultsFound\",\n        \"message\": \"We don't have rodent type animals in the store, please use one of the following categories - cats, dogs, rabbits to get results\"\n    }\n}"
+				},
+				{
+					"id": "4d55aaaa-5d40-474f-901a-54b0117afccd",
+					"name": "Get all cats",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/animals?type=cats",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"animals"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "cats",
+									"description": "Can take one of the following values - cats, dogs, rabbits, birds"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Persian cat\",\n        \"description\": \"The Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the 'Persian Longhair' in English-speaking countries\",\n        \"life span\": \"12-17 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Munchkin cat\",\n        \"description\": \"The Munchkin cat or Sausage cat is a relatively new breed of cat characterized by its very short legs, which are caused by genetic mutation. The Munchkin is considered to be the original breed of dwarf cat.\",\n        \"life span\": \"12-15 years\"\n    }\n]"
+				},
+				{
+					"id": "cf0af2dc-805e-4314-81ca-990899755149",
+					"name": "Get all rabbits",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/animals?type=rabbits",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"animals"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "rabbits",
+									"description": "Can take one of the following values - cats, dogs, rabbits, birds"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Holland Lop\",\n        \"description\": \"Holland Lops are miniature/dwarf rabbits that only weigh about 2 to 4 pounds. They are muscular, relative to their compact stature, and have various coat colours. Their lopped ears are one of their most distinctive features.\",\n        \"life span\": \"7-10 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Alaska rabbit\",\n        \"description\": \"The Alaska Rabbit is a medium-sized breed, weighing up to 9 pounds, and can live with other rabbits as well as other animals and older children. Despite its name, the Alaska Rabbit was bred in Germany in a bid to recreate the Alaskan Fox’s popular and plush fur. The effort failed, and the Alaska Rabbit has an intense black coat with black guard hair rather than the desired white guard hairs. Despite this, the breed became and remains famous for its beautiful looks and sweet temperament.\",\n        \"life span\": \"7-10 years\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Animals",
+			"_postman_id": "708a6b28-9b40-46b7-b509-cf54662634e9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"dogs\",\n    \"breed\": \"Golden Retriever\",\n    \"description\": \"The Golden Retriever is a British breed of retriever dog of medium size. It is characterised by a gentle and affectionate nature and a striking golden coat.\",\n    \"life span\": \"10-12 years\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/animals",
+				"description": "Add animals to the petstore.\n\nThis API expects `type, breed, description and life span` parameters to be passed in reequest body for adding new animlas to the store."
+			},
+			"response": [
+				{
+					"id": "39c13075-8bad-4c08-81b7-d7d120994b50",
+					"name": "Add new breed to the store",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"dogs\",\n    \"breed\": \"Golden Retriever\",\n    \"description\": \"The Golden Retriever is a British breed of retriever dog of medium size. It is characterised by a gentle and affectionate nature and a striking golden coat.\",\n    \"life span\": \"10-12 years\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/animals"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"message\": \"Animal breed added successfully to the store.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Animals",
+			"_postman_id": "fafd0f56-c215-4ffc-9bbb-e33d7fe2e614",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"rabbits\",\n    \"breed\": \"Holland Lop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/animals",
+				"description": "Delete animals from the store.\n\nThis API expects `type and breed` parameters to be passed in reequest body for deleting animlas from the store."
+			},
+			"response": [
+				{
+					"id": "10c58981-0379-44bc-a235-b6248c3e3c0d",
+					"name": "Remove breed from the store",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"rabbits\",\n    \"breed\": \"Holland Lop\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/animals"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"message\": \"Holland Lop breed rabbits have been removed from the store.\"\n}"
+				}
+			]
+		}
+	]
+}
