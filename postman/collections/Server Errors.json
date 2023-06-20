@@ -1,15 +1,15 @@
 {
 	"info": {
-		"_postman_id": "106c7fed-5c74-4c85-9562-31b63993ff4b",
+		"_postman_id": "052e1e5c-5700-4fbf-b00f-dfaf4f8aff6d",
 		"name": "Server Errors",
 		"description": "This collection helps you learn how to configure different scenarios/examples for any endpoint/request.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "938966-106c7fed-5c74-4c85-9562-31b63993ff4b"
+		"_uid": "15205119-052e1e5c-5700-4fbf-b00f-dfaf4f8aff6d"
 	},
 	"item": [
 		{
 			"name": "Animals",
-			"id": "df0a1587-3a99-421c-b2c4-9fe1e8756bc9",
+			"id": "ef75ded2-2c8e-46e4-bb5f-c7252a7dd04f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -38,7 +38,7 @@
 			},
 			"response": [
 				{
-					"id": "859096bb-1b46-4f83-bed8-604eee0f6f7e",
+					"id": "fb108d35-3a79-4075-a874-8960bc73e9cb",
 					"name": "Get all animals",
 					"originalRequest": {
 						"method": "GET",
@@ -69,7 +69,7 @@
 					"body": "[\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"German Sheperd\",\n        \"description\": \"The German Sheperd Dog, also known as the Alsatian, is a German breed of dog. They are commonly kept as companion dogs by pet lovers. They are also used in various fields of work like police work, search-and-rescue, disability assistance etc.\",\n        \"life span\": \"9-13 years\"\n    },\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"Bulldog\",\n        \"description\": \"The Bulldog, also known as the British or English Bulldog, is a British breed of dog. It is of medium size, a muscular, hefty dog with a wrinkled face and a distinctive pushed-in nose.\",\n        \"life span\": \"8-10 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Persian cat\",\n        \"description\": \"The Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the 'Persian Longhair' in English-speaking countries\",\n        \"life span\": \"12-17 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Munchkin cat\",\n        \"description\": \"The Munchkin cat or Sausage cat is a relatively new breed of cat characterized by its very short legs, which are caused by genetic mutation. The Munchkin is considered to be the original breed of dwarf cat.\",\n        \"life span\": \"12-15 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Holland Lop\",\n        \"description\": \"Holland Lops are miniature/dwarf rabbits that only weigh about 2 to 4 pounds. They are muscular, relative to their compact stature, and have various coat colours. Their lopped ears are one of their most distinctive features.\",\n        \"life span\": \"7-10 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Alaska rabbit\",\n        \"description\": \"The Alaska Rabbit is a medium-sized breed, weighing up to 9 pounds, and can live with other rabbits as well as other animals and older children. Despite its name, the Alaska Rabbit was bred in Germany in a bid to recreate the Alaskan Fox’s popular and plush fur. The effort failed, and the Alaska Rabbit has an intense black coat with black guard hair rather than the desired white guard hairs. Despite this, the breed became and remains famous for its beautiful looks and sweet temperament.\",\n        \"life span\": \"7-10 years\"\n    }\n]"
 				},
 				{
-					"id": "8f1b2aca-e641-497a-a125-0ff80684cd8f",
+					"id": "de698008-c9b0-4fb1-a814-2141004ea9ce",
 					"name": "Get all dogs",
 					"originalRequest": {
 						"method": "GET",
@@ -107,7 +107,7 @@
 					"body": "[\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"German Sheperd\",\n        \"description\": \"The German Sheperd Dog, also known as the Alsatian, is a German breed of dog. They are commonly kept as companion dogs by pet lovers. They are also used in various fields of work like police work, search-and-rescue, disability assistance etc.\",\n        \"life span\": \"9-13 years\"\n    },\n    {\n        \"type\": \"dogs\",\n        \"breed\": \"Bulldog\",\n        \"description\": \"The Bulldog, also known as the British or English Bulldog, is a British breed of dog. It is of medium size, a muscular, hefty dog with a wrinkled face and a distinctive pushed-in nose.\",\n        \"life span\": \"8-10 years\"\n    }\n]"
 				},
 				{
-					"id": "d92920cc-4831-41b2-ab6b-ada503b793b8",
+					"id": "8dc3bc48-77e4-4c78-8642-e6f757667a43",
 					"name": "Get all cats",
 					"originalRequest": {
 						"method": "GET",
@@ -145,7 +145,7 @@
 					"body": "[\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Persian cat\",\n        \"description\": \"The Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the 'Persian Longhair' in English-speaking countries\",\n        \"life span\": \"12-17 years\"\n    },\n    {\n        \"type\": \"cats\",\n        \"breed\": \"Munchkin cat\",\n        \"description\": \"The Munchkin cat or Sausage cat is a relatively new breed of cat characterized by its very short legs, which are caused by genetic mutation. The Munchkin is considered to be the original breed of dwarf cat.\",\n        \"life span\": \"12-15 years\"\n    }\n]"
 				},
 				{
-					"id": "ebf78360-9c9d-4d71-be84-6bdb041664da",
+					"id": "c5e7fdeb-7f22-4729-95c2-80a1b57134c9",
 					"name": "Get all rabbits",
 					"originalRequest": {
 						"method": "GET",
@@ -183,7 +183,7 @@
 					"body": "[\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Holland Lop\",\n        \"description\": \"Holland Lops are miniature/dwarf rabbits that only weigh about 2 to 4 pounds. They are muscular, relative to their compact stature, and have various coat colours. Their lopped ears are one of their most distinctive features.\",\n        \"life span\": \"7-10 years\"\n    },\n    {\n        \"type\": \"rabbits\",\n        \"breed\": \"Alaska rabbit\",\n        \"description\": \"The Alaska Rabbit is a medium-sized breed, weighing up to 9 pounds, and can live with other rabbits as well as other animals and older children. Despite its name, the Alaska Rabbit was bred in Germany in a bid to recreate the Alaskan Fox’s popular and plush fur. The effort failed, and the Alaska Rabbit has an intense black coat with black guard hair rather than the desired white guard hairs. Despite this, the breed became and remains famous for its beautiful looks and sweet temperament.\",\n        \"life span\": \"7-10 years\"\n    }\n]"
 				},
 				{
-					"id": "24935f0d-4422-43fa-850e-de870e95c981",
+					"id": "ecd4db6a-5649-4b25-858d-3d739f7b3320",
 					"name": "No matching animals found in the store",
 					"originalRequest": {
 						"method": "GET",
@@ -224,7 +224,7 @@
 		},
 		{
 			"name": "Animals",
-			"id": "d9229104-a959-46d0-83a9-c8c41cd11d6f",
+			"id": "ea35d65c-ceb7-4f40-823d-36cde66ea3d4",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -253,7 +253,7 @@
 			},
 			"response": [
 				{
-					"id": "9672f6c1-3e44-4110-97b4-048aa9443c54",
+					"id": "2cfdbdec-4d00-4146-b0de-e935a3807cb6",
 					"name": "Add new breed to the store",
 					"originalRequest": {
 						"method": "POST",
@@ -303,7 +303,7 @@
 		},
 		{
 			"name": "Animals",
-			"id": "27bd696b-62cc-458c-aaa5-cd573b1860c3",
+			"id": "bcd1b5fb-814c-45c0-a901-63e1e75bc527",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -332,7 +332,7 @@
 			},
 			"response": [
 				{
-					"id": "46debd0a-6e0f-45a2-a3ed-d3a529739a55",
+					"id": "db7fcc15-4293-4df1-9372-21a8a350afb3",
 					"name": "Remove breed from the store",
 					"originalRequest": {
 						"method": "DELETE",
